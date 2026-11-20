@@ -39,3 +39,9 @@ The trained agent in this run ended up learning to never buy at all -
 it just holds cash the whole time. That's a real result, not a bug I
 left in by accident. See the Discussion section of the report for why
 I think that happened and what I'd change.
+
+## Author
+
+**Ousmana Tunkara** · [GitHub @Kodelack47](https://github.com/Kodelack47)
+
+Licensed under the [MIT License](LICENSE).
