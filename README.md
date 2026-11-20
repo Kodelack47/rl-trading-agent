@@ -46,10 +46,34 @@ then the final comparison against two baselines.
 
 ## Heads up on the result
 
-The trained agent in this run ended up learning to never buy at all -
-it just holds cash the whole time. That's a real result, not a bug I
-left in by accident. See the Discussion section of the report for why
-I think that happened and what I'd change.
+The trained agent in this run learned to **never buy**: it holds cash the
+whole time, so its return is exactly 0.00%. That's a real result, not a
+bug, and I think it's more useful to report honestly than to rerun until
+the number looks better.
+
+**Why it happened.** In the final Q-table, every *Buy* value is negative
+across all five trend buckets, while *Hold* sits at exactly 0. Holding
+cash never loses money and never pays the 0.1% transaction fee, so the
+agent found a safe local optimum: never buy, never lose. Given how the
+rewards are defined, that really is reward-maximizing. It just gives up
+the 10.43% that buy-and-hold earned.
+
+**What it did learn.** It comfortably beat the random-action baseline
+(-24.28%), which lost value mostly to fees and to holding through bad
+days. So it learned to avoid pointless, costly trades, but not that some
+trades are worth the risk.
+
+**What I'd try next**
+- A richer state, such as recent volatility, so the agent can tell a
+  strong uptrend from a shaky one
+- Rewards that don't quietly punish all risk: a lower transaction cost,
+  or a small bonus for holding through a net-positive stretch
+- Many more training episodes, since tabular training is cheap
+- Risk-adjusted rewards, as in direct reinforcement trading
+  (Moody & Saffell, 2001)
+
+This kind of overly cautious "do nothing" policy is a well-known failure
+mode in reinforcement learning in general, not just in trading.
 
 ## Author
 
