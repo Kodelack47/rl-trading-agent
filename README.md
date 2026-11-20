@@ -1,4 +1,4 @@
-# RL Trading Agent - README
+# RL Trading Agent
 
 A tabular Q-learning agent that learns to trade a simulated commodity
 price series (Buy / Sell / Hold), built from scratch with just numpy,
@@ -32,6 +32,17 @@ progress and final results to the terminal, and save two charts into a
 - Trains a tabular Q-learning agent over 500 episodes
 - Compares the trained agent's performance against a buy-and-hold
   baseline and a random-action baseline
+
+## Demo
+
+Training output from a full run: average reward per 50 episodes as exploration (epsilon) decays,
+then the final comparison against two baselines.
+
+![Terminal output of training and results](docs/training-output.png)
+
+| Learning curve | Portfolio value vs. baselines |
+|---|---|
+| ![Reward per episode with a moving average](rltrader_output/learning_curve.png) | ![Trained agent vs. buy-and-hold vs. random](rltrader_output/portfolio_vs_baseline.png) |
 
 ## Heads up on the result
 
